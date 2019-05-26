@@ -1,3 +1,8 @@
 {
-  "mongoURI" : "mongodb+srv://amir:13771377@mern-s42j5.mongodb.net/test?retryWrites=true"
+  "mongoURI": "mongodb+srv://amir:13771377@mern-s42j5.mongodb.net/test?retryWrites=true",
+  "jwtSecret" :"amirbayatwebsite",
+  "url": "http://100course.ir:27017/courseir_db",
+  "usr" : "courseir_user",
+  "pass" : "5sky8ZY0p4",
+  "nurl" : "mongodb://courseir_user:5sky8ZY0p4@100course.ir:27017/courseir_db"
 }

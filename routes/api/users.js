@@ -3,8 +3,9 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const {check, validationResult} = require('express-validator/check');
 const bcrypt = require('bcryptjs');
-
+const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const config = require('config');
 
 // //@route    get api/users
 // // @desc    test route
@@ -55,10 +56,18 @@ router.post('/', [
 
         //everything that give us promise like .then() we user await before it!
         //return jsonwebtoken -> after register becomed logged on
-        res.send('user registered!');
-
-
-        res.send('user route');
+        const payload = {
+            user: {
+                id: user.id,
+            }
+        };
+        jwt.sign(payload,
+            config.get('jwtSecret'),
+            {expiresIn:360000},
+            (err, token) => {
+                if(err) throw err;
+                res.json({token});
+            });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('server error');
