@@ -9,7 +9,7 @@ const nurl = config.get('nurl');
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true});
+        await mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
         //await mongoose.connect(nurl, {useNewUrlParser: true});
         console.log('mongoDB connected');
     } catch (err) {
